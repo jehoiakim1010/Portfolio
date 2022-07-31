@@ -979,7 +979,7 @@ nav a:hover::before {
 	}
 }
 
-/* TEST */
+/* Skill bar */
 .Skills {
 	margin: 0;
 	padding: 0;
@@ -1015,11 +1015,11 @@ nav a:hover::before {
 	content: attr(per);
 	position: absolute;
 	border-radius: 4px;
-	font-size: 13px;
+	font-size: 15px;
 	color: white;
 	font-weight: 700;
-	top: -3px;
-	right: -20px;
+	top: -5.5px;
+	right: 25px;
 	transform: translateX(50%);
 }
 
