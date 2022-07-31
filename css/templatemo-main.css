@@ -271,9 +271,9 @@ nav a:hover::before {
   overflow-y: scroll;
   position: relative;
   width: 70%;
-  height: 80%;
+  height: 100%;
   left: 30%;
-  top: 10%;
+  top: 0%;
   bottom: 10%;
   background: rgba(0, 0, 0, 0.5);
 }
