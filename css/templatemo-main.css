@@ -333,9 +333,10 @@ nav a:hover::before {
 
 #prod-video {
 	width: 100%;
+	position: relative;
 	height: 100%;
 	object-fit: cover;
-	top: -100px;
+	z-index: -1;
 
 }
 
