@@ -94,7 +94,6 @@
             var vid = document.getElementById("tm-video");
             vid.onended = function () {
                 var number = Math.floor(Math.random() * 4) + 1;
-                console.log(number);
                 var mySrc = "video/Video-" + number + ".mp4";
                 vid.src = mySrc;
             };
