@@ -22,7 +22,7 @@
 
     <script src="js/script.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    
+
     <!--Contact -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
@@ -84,13 +84,21 @@
 
         gtag('config', 'G-H9Z9W7GTN6');
     </script>
-    
+
     <div id="tm-video-container">
-        <video autoplay muted loop id="tm-video">
-            <!-- <source src="video/Great Conjunction Vid.mp4" type="video/mp4"> -->
-            <source src="video/Great Conjuntion Vid.mp4#t=0.1" type="video/mp4" preload="auto">
+        <video autoplay muted id="tm-video">
+            <source src="video/Video-1.mp4#t=0.1" type="video/mp4" preload="auto">
             Your browser does not support HTML5 video.
         </video>
+        <script>
+            var vid = document.getElementById("tm-video");
+            vid.onended = function () {
+                var number = Math.floor(Math.random() * 4) + 1;
+                console.log(number);
+                var mySrc = "video/Video-" + number + ".mp4";
+                vid.src = mySrc;
+            };
+        </script>
     </div>
     <!--
     <div class="sequence">
@@ -180,7 +188,7 @@
                                 <div class="Skill-per" per="90%" style="max-width:90%"></div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="Skills">
                         <div class="Skill">
                             <div class="Skill-name">Web Development (HTML, CSS, JavaScript, Automation(BOT))</div>
@@ -620,7 +628,8 @@
                                         </div>
                                     </div>
                                     <div class="image">
-                                        <model-viewer src="Models/Banner.glb" camera-controls auto-rotate></model-viewer>
+                                        <model-viewer src="Models/Banner.glb" camera-controls auto-rotate>
+                                        </model-viewer>
                                     </div>
                                 </div>
                             </div>
@@ -635,7 +644,8 @@
                                         </div>
                                     </div>
                                     <div class="image">
-                                        <model-viewer src="Models/CrazyClothing.glb" camera-controls auto-rotate></model-viewer>
+                                        <model-viewer src="Models/CrazyClothing.glb" camera-controls auto-rotate>
+                                        </model-viewer>
                                     </div>
                                 </div>
                             </div>
