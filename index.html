@@ -88,14 +88,20 @@
     <div id="tm-video-container">
         <video autoplay muted id="tm-video">
             <source src="video/Video-1.mp4#t=0.1" type="video/mp4" preload="auto">
-            Your browser does not support HTML5 video.
+            Your browser does not support the video tag.
         </video>
         <script>
             var vid = document.getElementById("tm-video");
             vid.onended = function () {
-                var number = Math.floor(Math.random() * 4) + 1;
-                var mySrc = "video/Video-" + number + ".mp4";
-                vid.src = mySrc;
+
+                var delayInMilliseconds = 2000; //2 second
+
+                setTimeout(function () {
+                    var number = Math.floor(Math.random() * 4) + 1;
+                    var mySrc = "video/Video-" + number + ".mp4";
+                    vid.src = mySrc;
+                }, delayInMilliseconds);
+
             };
         </script>
     </div>
