@@ -35,9 +35,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-
-
-
             // navigation click actions 
             $('.scroll-link').on('click', function (event) {
                 event.preventDefault();
@@ -90,21 +87,61 @@
             <source src="video/Video-1.mp4#t=0.1" type="video/mp4" preload="auto">
             Your browser does not support the video tag.
         </video>
+        <div id="tm-video-overlay"></div>
         <script>
-            var vid = document.getElementById("tm-video");
-            vid.onended = function () {
+            var video = document.getElementById("tm-video");
+            var overlay = document.getElementById("tm-video-overlay");
 
-                var delayInMilliseconds = 2000; //2 second
+            video.addEventListener('ended', function () {
+                var number = Math.floor(Math.random() * 4) + 1;
+                var mySrc = "video/Video-" + number + ".mp4";
+                video.src = mySrc;
+                video.load(); // Load new video
+            });
 
-                setTimeout(function () {
-                    var number = Math.floor(Math.random() * 4) + 1;
-                    var mySrc = "video/Video-" + number + ".mp4";
-                    vid.src = mySrc;
-                }, delayInMilliseconds);
+            video.addEventListener('play', function () {
+                fadeOut(overlay);
+            });
 
-            };
+            video.addEventListener('pause', function () {
+                fadeIn(overlay);
+            });
+
+            video.addEventListener('loadeddata', function () {
+                // Wait until new video has fully loaded before starting to play it
+                video.play();
+            });
+
+            function fadeOut(element) {
+                var op = 1; // initial opacity
+                var timer = setInterval(function () {
+                    if (op <= 0.1) {
+                        clearInterval(timer);
+                        element.style.display = 'none';
+                    }
+                    element.style.opacity = op;
+                    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    op -= op * 0.1;
+                }, 50);
+            }
+
+            function fadeIn(element) {
+                var op = 0.1; // initial opacity
+                element.style.display = 'block';
+                var timer = setInterval(function () {
+                    if (op >= 1) {
+                        clearInterval(timer);
+                    }
+                    element.style.opacity = op;
+                    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    op += op * 0.1;
+                }, 50);
+            }
+
+
         </script>
     </div>
+
     <!--
     <div class="sequence">
 
@@ -137,10 +174,10 @@
         <ul>
             <li><a href="#1"><i class="fa fa-home"></i> <em>Home</em></a></li>
             <li><a href="#2"><i class="fa fa-user"></i> <em>Resume</em></a></li>
-            <li><a href="#3"><i class="fa fa-pencil"></i> <em>Artwork</em></a></li>
-            <li><a href="#4"><i class="fa fa-gamepad"></i> <em>Game Work</em></a></li>
-            <li><a href="#5"><i class="fa fa-product-hunt"></i> <em>Projects</em></a></li>
-            <li><a href="#6"><i class="fa fa-handshake-o"></i> <em>Commission</em></a></li>
+            <li><a href="#3"><i class="fa fa-certificate"></i> <em>Certificates</em></a></li>
+            <li><a href="#4"><i class="fa fa-pencil"></i> <em>Artwork</em></a></li>
+            <li><a href="#5"><i class="fa fa-gamepad"></i> <em>Game Work</em></a></li>
+            <li><a href="#6"><i class="fa fa-product-hunt"></i> <em>Projects</em></a></li>
         </ul>
     </nav>
 
@@ -328,17 +365,589 @@
             <div class="content second-content">
                 <iframe
                     src="https://docs.google.com/document/d/e/2PACX-1vTp3lwA6kyb9RMRh0BQJf2JWsUjdbuG158ZsUv3kcF7-0q6Bnu6J0N6hZN-HZypZQ/pub?embedded=true"
-                    width="850px" height="100%"></iframe>
+                    width="850px" height="100%" loading="lazy"></iframe>
                 <!--<iframe src="TANIEGRA_JEHOIAKIM_RESUME.pdf#toolbar=0" width="100%" height="550px"> </iframe>-->
                 <!--<iframe src="TANIEGRA_JEHOIAKIM_RESUME.pdf" width="100%" height="100%"></iframe>-->
             </div>
+
         </div>
         <div class="slide" id="3">
-            <div class="content third-content">
-                <iframe src="https://jehoiakim1010.artstation.com/" title="Artstation" width=100% height=100%></iframe>
+            <div class="slide" id="6">
+                <div class="content fourth-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>3rd Philippine Skilling Summit</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - 3rd Philippine Skilling Summit  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>4th Philippine Skilling Summit</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - 4th Philippine Skilling Summit.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Fundamentals Of Computer Hacking</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-86575d0e-b5e9-4868-95af-dedfd5f9d0be.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>image Management & Elastic Volume Service</h2>
+                                                <p>Huawei</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/certificate_page-0001.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Python Essential</h2>
+                                                <p>Huawei</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/certificate_python_page-0001.jpg"></img>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>HCIA - Cloud Service V2.2</h2>
+                                                <p>Huawei</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/certificate_ebgenglish_1650545301861.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Stylized sculpting from real life references in ZBrush</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-84f21f8c-5677-4b8f-89ea-9e86724c197b (1).jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Learn Unity 3D - The Ultimate Program</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-6a608b94-0092-47d4-8f54-85aa1bb73532.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Java</h2>
+                                                <p>SoloLearn</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/cert-1068-6865039.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>SQL Server Azure Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/SQL Server Azure Track  - Skilling Summit 2022.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Building Inclusive Innovation At Scale with AI track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - Building Inclusive Innovation At Scale With AI Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Digital Transformation Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - Digital Transformation Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>IoB (Internet of Behaviours) Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - IoB (Internet of Behaviours) Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Low-Code Technology Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - Low-Code Technology Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Robotic Process Automation (RPA) Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - Robotic Process Automation (RPA) Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Virtual Reality and Augmented Reality Track</h2>
+                                                <p>Skilling Summit 2022</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Jehoiakim Taniegra - Virtual Reality and Augmented Reality Track  - Skilling Summit 2022.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Javascript Fundamentals</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-CIKWLQQW.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Photoshop Beginner Class: Digital Painting</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-8c420c3e-884f-4035-a041-c3e6739b709a.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Agile Methodology, New Trends & Shifts in the BPM Industry</h2>
+                                                <p>CIB.O</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/MOXmj.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Cybersafe Learning for Education Project (CLEP) Intermidiate Level</h2>
+                                                <p>GOPHILIPPINES</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/webinar.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>IoT, AI, Machine Learning: How They Shape The Future</h2>
+                                                <p>CIB.O</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/wITs7.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>IoT, AI, Machine Learning: How They Shape The Future</h2>
+                                                <p>CIB.O</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/wITs7.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Programming Languages Java: C/C++/C#</h2>
+                                                <p>CIB.O</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/Certificate of Attendance - Programming.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Create a Responsible Blog with Google Sites</h2>
+                                                <p>Google</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/certs_page-0001.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Boost Your Game Performance in Unity 3D</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-8068f2e9-f6d0-416e-8bc2-ea6d4eb5ef8d.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Cartoon Character Modeling in Blender</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-0283c274-7fa8-4f7c-85d9-0bbad53df2e6.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>How to Have fluent listening skills in english</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-1P4S1DXT.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Learn English for free - Upgrading all areas</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-AAXEHVTG.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>C++, Short and Sweet, Part 1</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-OKXJOGD9.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>C# Basics - Learn to Code the Right Way</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-BXNX2YGO.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Basics of Object Oriented Programming With C#</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-5579GRHR.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Develop Your Own Game Quick & Easy with Game Maker Studio</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-QRCLYHCU.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Programming 101</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-KS5GDDN8.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>After Effects CC for Beginners</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-7M6RDPSZ.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-effect">
+                                            <div class="hover-content">
+                                                <h2>Premiere Pro 101</h2>
+                                                <p>Udemy</p>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img
+                                                src="Certificates/UC-TMNT9BZ1.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="slide" id="4">
+            <div class="content fourth-content">
+                <iframe src="https://jehoiakim1010.artstation.com/" title="Artstation" width=100% height=100%></iframe>
+            </div>
+        </div>
+        <div class="slide" id="5">
             <div class="content fourth-content">
                 <div class="container-fluid">
                     <div class="row">
@@ -541,7 +1150,7 @@
                 </div>
             </div>
         </div>
-        <div class="slide" id="5">
+        <div class="slide" id="6">
             <div class="content sixth-content">
                 <div class="container-fluid">
                     <div class="row">
@@ -606,106 +1215,77 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slide" id="6">
-            <div class="content sixth-content">
-                <div class="container-fluid">
-                    <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Pants</h2>
-                                            <p>1</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <model-viewer src="Models/Pants.glb" camera-controls auto-rotate>
+                                            </model-viewer>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <model-viewer src="Models/Pants.glb" camera-controls auto-rotate></model-viewer>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Axie</h2>
-                                            <p>2</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <model-viewer src="Models/Axie.glb" camera-controls auto-rotate>
+                                            </model-viewer>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <model-viewer src="Models/Axie.glb" camera-controls auto-rotate></model-viewer>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Double Axe</h2>
-                                            <p>3</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <model-viewer src="Models/Wood.glb" camera-controls auto-rotate>
+                                            </model-viewer>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <model-viewer src="Models/Wood.glb" camera-controls auto-rotate></model-viewer>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Banner</h2>
-                                            <p>4</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <model-viewer src="Models/Banner.glb" camera-controls auto-rotate>
+                                            </model-viewer>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <model-viewer src="Models/Banner.glb" camera-controls auto-rotate>
-                                        </model-viewer>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Banner</h2>
-                                            <p>5</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <model-viewer src="Models/CrazyClothing.glb" camera-controls auto-rotate>
+                                            </model-viewer>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <model-viewer src="Models/CrazyClothing.glb" camera-controls auto-rotate>
-                                        </model-viewer>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Stop Motion</h2>
-                                            <p>6</p>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="image">
+                                            <video autoplay muted loop id="prod-video">
+                                                <!-- <source src="video/Great Conjunction Vid.mp4" type="video/mp4"> -->
+                                                <source src="video/Grad.mp4#t=0.1" type="video/mp4" preload="auto">
+                                                Your browser does not support HTML5 video.
+                                            </video>
                                         </div>
-                                    </div>
-                                    <div class="image">
-                                        <video autoplay muted loop id="prod-video">
-                                            <!-- <source src="video/Great Conjunction Vid.mp4" type="video/mp4"> -->
-                                            <source src="video/Grad.mp4#t=0.1" type="video/mp4" preload="auto">
-                                            Your browser does not support HTML5 video.
-                                        </video>
                                     </div>
                                 </div>
                             </div>
@@ -714,6 +1294,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

@@ -289,6 +289,7 @@ nav a:hover::before {
 	background-size: cover;
 }
 
+
 .slides .slide .content {
 	overflow: scroll;
 	position: relative;
@@ -602,6 +603,7 @@ nav a:hover::before {
 .fourth-content .item {
 	margin: 10px;
 }
+
 
 .fourth-content .item img {
 	max-width: 100%;
