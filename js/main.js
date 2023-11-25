@@ -106,7 +106,7 @@ $(function () {
 
 })
 
-var words = ['A Bit About Me', 'Im a Solo Indie Game Developer', 'Full-Time 3D Artist', 'Web Developer', 'Software Developer', 'Computer Technician'],
+var words = ['A Bit About Me', 'Im a Solo Indie Game Developer', '3D Artist', 'Web Developer', 'Software Developer', 'Computer Technician'],
     part,
     i = 0,
     offset = 0,

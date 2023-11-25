@@ -70,14 +70,20 @@
         }
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9Z9W7GTN6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9Z9W7GTN6">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-H9Z9W7GTN6');
+    </script>
 </head>
 
 <body>
 
     <div id="chat-circle" class="btn btn-raised">
         <div id="chat-overlay"></div>
-        <i class="fa fa-address-book">
+        <i class="fa fa-address-book"></i>
     </div>
 
     <div class="chat-box">
@@ -125,13 +131,6 @@
             </div>
         </div>
     </div>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-H9Z9W7GTN6');
-    </script>
 
     <div id="tm-video-container">
         <video autoplay muted id="tm-video">
@@ -194,8 +193,8 @@
     </div>
 
     <div class="sequence">
-
         <div class="seq-preloader">
+            <!--
             <svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg"
                 class="seq-preload-indicator">
                 <g fill="#F96D38">
@@ -207,8 +206,18 @@
                         d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z" />
                 </g>
             </svg>
+            -->
+            <div class='loading'>
+                <div class='logo'></div>
+                <div class='dots animate'>
+                  <div class='dot'></div>
+                  <div class='dot'></div>
+                  <div class='dot'></div>
+                  <div class='dot'></div>
+                  <div class='dot'></div>
+                </div>
+              </div>
         </div>
-
     </div>
 
     <nav>
@@ -262,7 +271,7 @@
                     <div class="main-btn"><a href="#2">Read More (Resume)</a></div>
                     <br>
                     <br>
-                    
+
                 </div>
                 <div class="col-md-9">
                     <div class="Skills">
