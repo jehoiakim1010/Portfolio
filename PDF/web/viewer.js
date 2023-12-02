@@ -15261,6 +15261,7 @@ class Toolbar {
           continue;
         }
         option.selected = true;
+        console.log(option.selected);
         predefinedValueFound = true;
       }
       if (!predefinedValueFound) {

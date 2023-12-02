@@ -636,13 +636,80 @@ nav a:hover::before {
 }
 
 .first-content .author-image img {
-	margin-top: 15px;
-	border-radius: 30px;
-	max-width: 100%;
-	overflow: hidden;
-	float: left;
-	margin-right: 35px;
+    margin-top: 15px;
+    border-radius: 50%; /* Set border-radius to 50% for a circular shape */
+    max-width: 100%;
+    overflow: hidden;
+    float: left;
+    margin-right: 35px;
 }
+
+.image-overlay::before {
+    animation: anim 30s infinite;
+    background-image: url('../img/author_image.jpg');
+	background-position: center;
+    background-size: 100%; /* or background-size: 100%; */
+    border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
+box-shadow: 0 -1vmin 1vmin DarkGreen inset, 0 1vmin 1vmin MediumSeaGreen inset,
+            0 -1vmin 1vmin ForestGreen inset;
+    content: "";
+	filter: drop-shadow(0 0 1vmin LimeGreen) drop-shadow(0 1vmin 1vmin DarkGreen)
+	drop-shadow(1vmin -1vmin 1vmin ForestGreen)
+	drop-shadow(0 0 1vmin MediumSeaGreen);
+    height: 30vmin;
+    width: 30vmin;
+	float: left;
+}
+
+@keyframes anim {
+	0%,
+	100% {
+		border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+	}
+
+	10% {
+		border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+	}
+
+	20% {
+		border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
+	}
+
+	30% {
+		border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
+box-shadow: 0 -1vmin 1vmin green inset, -1vmin -1vmin 1vmin LightGreen inset,
+            -1vmin -1vmin 1vmin DarkGreen inset, 1vmin 1vmin 1vmin LimeGreen inset;
+	}
+
+	40% {
+		border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
+	}
+
+	50% {
+		border-radius: 100%;
+box-shadow: 0 -1vmin 1vmin green inset, -1vmin -1vmin 1vmin LightGreen inset,
+            -1vmin -1vmin 1vmin DarkGreen inset, 1vmin 1vmin 1vmin LimeGreen inset;
+	}
+
+	60% {
+		border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
+	}
+
+	70% {
+		border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+box-shadow: 1vmin 1vmin 1vmin LightGreen inset,
+1vmin -1vmin 1vmin DarkGreen inset, -1vmin -1vmin 1vmin LimeGreen inset;
+	}
+
+	80% {
+		border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
+	}
+
+	90% {
+		border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
+	}
+}
+
 
 .first-content h2 {
 	font-size: 36px;
