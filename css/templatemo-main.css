@@ -1,10 +1,12 @@
 @keyframes seq-preloader {
 	50% {
 		opacity: 1;
+		overflow: hidden;
 	}
 
 	100% {
 		opacity: 0;
+		overflow: visible;
 	}
 }
 
