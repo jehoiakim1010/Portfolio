@@ -314,7 +314,6 @@ textarea {
 }
 
 .seq-preload-indicator {
-	overflow: visible;
 	position: relative;
 	top: 50%;
 	left: 50%;
@@ -597,10 +596,22 @@ nav a:hover::before {
 	background: rgba(250, 250, 250, 0.5);
 }
 
-#tm-video-container {
-	max-height: 720px;
-	overflow: hidden;
-	background-color: #333;
+#background {
+	background: linear-gradient(45deg, #6fc7b5 0%, #13bdce 20%, #0094d9 40%, #5a3694 60%, #ee4d74 80%, #f58c58 100%);
+	background-size: 600%;
+	background-position: 0% 100%;
+	-webkit-animation: gradient 30s ease-in-out infinite;
+			animation: gradient 30s ease-in-out infinite;
+	position: absolute;
+	left: 0;
+	visibility: visible;
+	opacity: 1;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 
 #tm-video {
@@ -622,7 +633,6 @@ nav a:hover::before {
 	height: 100%;
 	object-fit: cover;
 	z-index: -1;
-
 }
 
 .main-btn a:hover {
@@ -1389,7 +1399,7 @@ box-shadow: 1vmin 1vmin 1vmin LightGreen inset,
 }
 
 .Skill-name {
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 700;
 	color: #f1f1f1;
 	text-transform: uppercase;
@@ -1397,7 +1407,7 @@ box-shadow: 1vmin 1vmin 1vmin LightGreen inset,
 }
 
 .Skill-bar {
-	height: 10px;
+	height: 13px;
 	background: #282828;
 	border-radius: 3px;
 
